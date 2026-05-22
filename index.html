@@ -8,303 +8,94 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --burgundy: #5C1A1A;
-    --deep-wine: #3B0A0A;
-    --wine: #6B1F1F;
-    --gold: #C9A84C;
-    --gold-dim: rgba(201,168,76,0.2);
-    --cream: #F5EFE0;
-    --parchment: #EDE5D0;
-    --muted: #8B7355;
-    --ink: #1A0A00;
+    --burgundy: #5C1A1A; --deep-wine: #3B0A0A; --wine: #6B1F1F;
+    --gold: #C9A84C; --gold-dim: rgba(201,168,76,0.2);
+    --cream: #F5EFE0; --parchment: #EDE5D0; --muted: #8B7355; --ink: #1A0A00;
   }
+  body { background: var(--deep-wine); font-family: 'Montserrat', sans-serif; min-height: 100vh; color: var(--cream);
+    background-image: radial-gradient(ellipse at 15% 50%, rgba(201,168,76,0.04) 0%, transparent 55%), radial-gradient(ellipse at 85% 10%, rgba(92,26,26,0.5) 0%, transparent 50%); }
 
-  body {
-    background: var(--deep-wine);
-    font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
-    color: var(--cream);
-    background-image:
-      radial-gradient(ellipse at 15% 50%, rgba(201,168,76,0.04) 0%, transparent 55%),
-      radial-gradient(ellipse at 85% 10%, rgba(92,26,26,0.5) 0%, transparent 50%);
-  }
-
-  /* ── AUTH SCREEN ── */
-  #authScreen {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 32px;
-    padding: 40px;
-  }
-
-  .auth-logo {
-    text-align: center;
-  }
-
+  /* AUTH */
+  #authScreen { min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 32px; padding: 40px; }
   .auth-line { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 20px; }
-
-  .auth-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    line-height: 1;
-  }
-
+  .auth-title { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; letter-spacing: 0.15em; line-height: 1; text-align: center; }
   .auth-title span { color: var(--gold); font-style: italic; }
-
-  .auth-subtitle {
-    font-size: 0.62rem;
-    letter-spacing: 0.35em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-top: 12px;
-  }
-
-  .auth-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.1rem;
-    color: rgba(245,239,224,0.5);
-    text-align: center;
-    max-width: 320px;
-  }
-
-  .btn-google {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--cream);
-    color: var(--ink);
-    border: none;
-    padding: 14px 32px;
-    border-radius: 3px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-  }
-
+  .auth-subtitle { font-size: 0.62rem; letter-spacing: 0.35em; color: var(--muted); text-transform: uppercase; margin-top: 12px; text-align: center; }
+  .auth-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(245,239,224,0.5); text-align: center; max-width: 320px; }
+  .btn-google { display: flex; align-items: center; gap: 14px; background: var(--cream); color: var(--ink); border: none; padding: 14px 32px; border-radius: 3px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.1s; }
   .btn-google:hover { background: var(--parchment); transform: translateY(-1px); }
   .btn-google svg { width: 18px; height: 18px; }
 
-  /* ── MAIN APP ── */
+  /* APP */
   #appScreen { display: none; }
-
-  .topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 40px;
-    border-bottom: 1px solid var(--gold-dim);
-    position: sticky;
-    top: 0;
-    background: rgba(59,10,10,0.95);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-  }
-
-  .topbar-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-  }
-
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--gold-dim); position: sticky; top: 0; background: rgba(59,10,10,0.95); backdrop-filter: blur(8px); z-index: 100; }
+  .topbar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; letter-spacing: 0.1em; }
   .topbar-logo span { color: var(--gold); font-style: italic; }
-
   .topbar-right { display: flex; align-items: center; gap: 16px; }
-
-  .user-name {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  .btn-signout {
-    background: transparent;
-    border: 1px solid var(--gold-dim);
-    color: var(--muted);
-    padding: 6px 14px;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 2px;
-    transition: all 0.2s;
-  }
-
+  .user-name { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+  .btn-signout { background: transparent; border: 1px solid var(--gold-dim); color: var(--muted); padding: 6px 14px; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; font-family: 'Montserrat', sans-serif; border-radius: 2px; transition: all 0.2s; }
   .btn-signout:hover { border-color: var(--gold); color: var(--gold); }
-
-  .main { max-width: 860px; margin: 0 auto; padding: 40px 20px; }
+  .main { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
 
   /* STATS */
-  .stats-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 40px;
-    animation: fadeUp 0.5s ease;
-  }
+  .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+  .stat-box { background: rgba(245,239,224,0.03); border: 1px solid var(--gold-dim); border-radius: 4px; padding: 16px; text-align: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
 
-  .stat-box {
-    background: rgba(245,239,224,0.03);
-    border: 1px solid var(--gold-dim);
-    border-radius: 4px;
-    padding: 16px;
-    text-align: center;
-  }
+  /* SEARCH */
+  .search-bar { position: relative; margin-bottom: 20px; }
+  .search-bar input { width: 100%; background: rgba(245,239,224,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 3px; padding: 12px 20px 12px 44px; color: var(--cream); font-family: 'Montserrat', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.2s; }
+  .search-bar input:focus { border-color: rgba(201,168,76,0.5); }
+  .search-bar input::placeholder { color: var(--muted); }
+  .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 1rem; pointer-events: none; }
+  .search-clear { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; display: none; }
+  .search-clear.visible { display: block; }
 
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.55rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 5px;
-  }
-
-  /* ADD FORM */
-  .add-section {
-    background: rgba(245,239,224,0.03);
-    border: 1px solid rgba(201,168,76,0.18);
-    border-radius: 4px;
-    padding: 32px;
-    margin-bottom: 40px;
-    animation: fadeUp 0.5s ease 0.1s both;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 24px;
-  }
-
+  /* FORM */
+  .add-section { background: rgba(245,239,224,0.03); border: 1px solid rgba(201,168,76,0.18); border-radius: 4px; padding: 32px; margin-bottom: 40px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .form-group { display: flex; flex-direction: column; gap: 6px; }
   .form-group.full { grid-column: 1 / -1; }
-
-  label {
-    font-size: 0.58rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  input, select, textarea {
-    background: rgba(245,239,224,0.05);
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 3px;
-    padding: 10px 14px;
-    color: var(--cream);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.82rem;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
-
-  input:focus, select:focus, textarea:focus { border-color: rgba(201,168,76,0.5); }
+  label { font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+  input[type="text"], input[type="date"], select, textarea { background: rgba(245,239,224,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 3px; padding: 10px 14px; color: var(--cream); font-family: 'Montserrat', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.2s; width: 100%; }
+  input[type="text"]:focus, select:focus, textarea:focus { border-color: rgba(201,168,76,0.5); }
   select option { background: var(--deep-wine); }
   textarea { resize: vertical; min-height: 80px; }
 
+  /* IMAGE UPLOAD */
+  .upload-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .upload-box { border: 1px dashed rgba(201,168,76,0.25); border-radius: 4px; padding: 16px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .upload-box:hover { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+  .upload-box input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .upload-icon { font-size: 1.8rem; opacity: 0.4; }
+  .upload-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .upload-preview { width: 100%; height: 100px; object-fit: cover; border-radius: 3px; display: none; }
+  .upload-preview.visible { display: block; }
+  .upload-change { font-size: 0.55rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+
+  /* STARS */
   .star-row { display: flex; gap: 8px; margin-top: 4px; }
-
-  .star {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: rgba(201,168,76,0.2);
-    transition: color 0.15s, transform 0.1s;
-    user-select: none;
-  }
-
+  .star { font-size: 1.5rem; cursor: pointer; color: rgba(201,168,76,0.2); transition: color 0.15s, transform 0.1s; user-select: none; }
   .star:hover { transform: scale(1.2); }
   .score-label { font-size: 0.7rem; color: var(--muted); margin-top: 4px; font-style: italic; min-height: 16px; }
-
   .form-actions { display: flex; gap: 12px; margin-top: 20px; align-items: center; }
-
-  .btn-primary {
-    background: var(--burgundy);
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 12px 32px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background 0.2s, color 0.2s;
-  }
-
+  .btn-primary { background: var(--burgundy); border: 1px solid var(--gold); color: var(--gold); padding: 12px 32px; font-family: 'Montserrat', sans-serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; border-radius: 3px; transition: background 0.2s, color 0.2s; }
   .btn-primary:hover { background: var(--gold); color: var(--deep-wine); }
   .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-
   .save-status { font-size: 0.65rem; color: var(--muted); font-style: italic; }
 
-  /* FILTER BAR */
-  .filter-bar {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    align-items: center;
-    animation: fadeUp 0.5s ease 0.2s both;
-  }
-
-  .filter-btn {
-    background: transparent;
-    border: 1px solid rgba(201,168,76,0.2);
-    color: var(--muted);
-    padding: 6px 16px;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 2px;
-    font-family: 'Montserrat', sans-serif;
-    transition: all 0.2s;
-  }
-
+  /* FILTERS */
+  .filter-bar { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; align-items: center; }
+  .filter-btn { background: transparent; border: 1px solid rgba(201,168,76,0.2); color: var(--muted); padding: 6px 16px; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border-radius: 2px; font-family: 'Montserrat', sans-serif; transition: all 0.2s; }
   .filter-btn.active, .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
   .count-badge { margin-left: auto; font-size: 0.6rem; color: var(--muted); }
 
   /* WINE CARDS */
-  .wine-list { display: flex; flex-direction: column; gap: 14px; animation: fadeUp 0.5s ease 0.3s both; }
-
-  .wine-card {
-    background: rgba(245,239,224,0.03);
-    border: 1px solid rgba(201,168,76,0.1);
-    border-left: 3px solid var(--burgundy);
-    border-radius: 4px;
-    padding: 20px 24px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 16px;
-    align-items: start;
-    transition: background 0.2s, border-left-color 0.2s;
-  }
-
+  .wine-list { display: flex; flex-direction: column; gap: 14px; }
+  .wine-card { background: rgba(245,239,224,0.03); border: 1px solid rgba(201,168,76,0.1); border-left: 3px solid var(--burgundy); border-radius: 4px; overflow: hidden; transition: background 0.2s, border-left-color 0.2s; }
   .wine-card:hover { background: rgba(245,239,224,0.05); }
   .wine-card[data-type="Red"] { border-left-color: #7B1E1E; }
   .wine-card[data-type="White"] { border-left-color: #B8A05A; }
@@ -313,71 +104,51 @@
   .wine-card[data-type="Orange"] { border-left-color: #C07840; }
   .wine-card[data-type="Dessert"] { border-left-color: #9B6FAB; }
 
+  .card-inner { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 20px 24px; align-items: start; }
   .wine-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--cream); line-height: 1.2; }
   .wine-vintage { color: var(--muted); font-size: 0.9rem; }
   .wine-meta { font-size: 0.67rem; color: var(--muted); letter-spacing: 0.08em; margin-top: 5px; }
   .wine-meta span { margin-right: 14px; }
-
-  .wine-type-badge {
-    display: inline-block;
-    font-size: 0.53rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 2px;
-    margin-top: 7px;
-    border: 1px solid currentColor;
-  }
-
-  .badge-Red { color: #C06060; } .badge-White { color: #C9A84C; }
-  .badge-Rosé { color: #C26B7A; } .badge-Sparkling { color: #7AAAB8; }
-  .badge-Orange { color: #C07840; } .badge-Dessert { color: #9B6FAB; }
-
+  .wine-type-badge { display: inline-block; font-size: 0.53rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; margin-top: 7px; border: 1px solid currentColor; }
+  .badge-Red { color: #C06060; } .badge-White { color: #C9A84C; } .badge-Rosé { color: #C26B7A; } .badge-Sparkling { color: #7AAAB8; } .badge-Orange { color: #C07840; } .badge-Dessert { color: #9B6FAB; }
   .wine-notes { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: rgba(245,239,224,0.55); margin-top: 10px; line-height: 1.55; }
-
   .card-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; min-width: 70px; }
   .card-score { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--gold); line-height: 1; }
   .card-stars { font-size: 0.6rem; color: rgba(201,168,76,0.45); letter-spacing: 2px; }
   .card-date { font-size: 0.57rem; color: var(--muted); letter-spacing: 0.08em; }
-
-  .btn-delete {
-    background: none;
-    border: none;
-    color: rgba(245,239,224,0.12);
-    cursor: pointer;
-    font-size: 0.75rem;
-    padding: 3px 5px;
-    transition: color 0.2s;
-    margin-top: 6px;
-  }
-
+  .btn-delete { background: none; border: none; color: rgba(245,239,224,0.12); cursor: pointer; font-size: 0.75rem; padding: 3px 5px; transition: color 0.2s; margin-top: 6px; }
   .btn-delete:hover { color: #C06060; }
+
+  /* CARD IMAGES */
+  .card-images { display: flex; gap: 0; border-top: 1px solid rgba(201,168,76,0.08); }
+  .card-img-wrap { flex: 1; position: relative; overflow: hidden; max-height: 200px; }
+  .card-img-wrap + .card-img-wrap { border-left: 1px solid rgba(201,168,76,0.08); }
+  .card-img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.3s; }
+  .card-img:hover { transform: scale(1.03); }
+  .card-img-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.5)); font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,239,224,0.6); padding: 8px 10px 6px; }
 
   .empty-state { text-align: center; padding: 70px 20px; color: var(--muted); }
   .empty-icon { font-size: 3rem; opacity: 0.35; margin-bottom: 16px; }
   .empty-state p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; }
-
   .loading { text-align: center; padding: 60px; color: var(--muted); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
   @media (max-width: 600px) {
     .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    .form-grid { grid-template-columns: 1fr; }
+    .form-grid, .upload-grid { grid-template-columns: 1fr; }
     .form-group.full { grid-column: 1; }
     .topbar { padding: 16px 20px; }
     .main { padding: 24px 16px; }
+    .card-images { flex-direction: column; }
   }
 </style>
 </head>
 <body>
 
-<!-- AUTH SCREEN -->
+<!-- AUTH -->
 <div id="authScreen">
-  <div class="auth-logo">
+  <div>
     <div class="auth-line"></div>
     <div class="auth-title">Juano's <span>Cellar</span></div>
     <div class="auth-subtitle">Personal Wine Journal</div>
@@ -464,6 +235,31 @@
           <label>Tasting Notes</label>
           <textarea id="wineNotes" placeholder="Dark fruit, tobacco, velvety tannins... Paired with lamb chops."></textarea>
         </div>
+
+        <!-- IMAGE UPLOADS -->
+        <div class="form-group full">
+          <label>Photos</label>
+          <div class="upload-grid">
+            <div class="upload-box" onclick="document.getElementById('bottleFile').click()">
+              <input type="file" id="bottleFile" accept="image/*" onchange="previewImage(this,'bottlePreview','bottleIcon')" style="display:none">
+              <img id="bottlePreview" class="upload-preview" src="" alt="">
+              <div id="bottleIcon">
+                <div class="upload-icon">🍾</div>
+                <div class="upload-label">Bottle Photo</div>
+              </div>
+              <div class="upload-change" id="bottleChange" style="display:none">Tap to change</div>
+            </div>
+            <div class="upload-box" onclick="document.getElementById('personalFile').click()">
+              <input type="file" id="personalFile" accept="image/*" onchange="previewImage(this,'personalPreview','personalIcon')" style="display:none">
+              <img id="personalPreview" class="upload-preview" src="" alt="">
+              <div id="personalIcon">
+                <div class="upload-icon">📸</div>
+                <div class="upload-label">Your Photo</div>
+              </div>
+              <div class="upload-change" id="personalChange" style="display:none">Tap to change</div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="form-actions">
         <button class="btn-primary" id="btnAdd" onclick="addWine()">Add to Cellar</button>
@@ -471,7 +267,14 @@
       </div>
     </div>
 
-    <!-- FILTER BAR -->
+    <!-- SEARCH -->
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search by name, grape, region, country..." oninput="onSearch(this)">
+      <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+    </div>
+
+    <!-- FILTERS -->
     <div class="filter-bar">
       <button class="filter-btn active" onclick="setFilter('All',this)">All</button>
       <button class="filter-btn" onclick="setFilter('Red',this)">Red</button>
@@ -494,29 +297,17 @@
 <script>
 const SUPABASE_URL = 'https://tfkncvvymztrlsdopxmm.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRma25jdnZ5bXp0cmxzZG9weG1tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0MDIyNjQsImV4cCI6MjA5NDk3ODI2NH0.GSDaYnd2GfDo_3lc914O4-ZwamXdzuXsDQV0L_Cs7M4';
-
 const { createClient } = supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-let wines = [];
-let currentScore = 0;
-let currentFilter = 'All';
-let currentUser = null;
-
+let wines = [], currentScore = 0, currentFilter = 'All', currentUser = null, searchQuery = '';
 const scoreLabels = ['','Pass','Decent','Good','Very Good','Outstanding'];
 
-// ── AUTH ──
+// AUTH
 async function signInWithGoogle() {
-  await db.auth.signInWithOAuth({
-    provider: 'google',
-    options: { redirectTo: window.location.href }
-  });
+  await db.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.href } });
 }
-
-async function signOut() {
-  await db.auth.signOut();
-  location.reload();
-}
+async function signOut() { await db.auth.signOut(); location.reload(); }
 
 db.auth.onAuthStateChange(async (event, session) => {
   if (session?.user) {
@@ -531,52 +322,74 @@ db.auth.onAuthStateChange(async (event, session) => {
   }
 });
 
-// ── STAR RATING ──
+// IMAGE PREVIEW
+function previewImage(input, previewId, iconId) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const preview = document.getElementById(previewId);
+    preview.src = e.target.result;
+    preview.classList.add('visible');
+    document.getElementById(iconId).style.display = 'none';
+    const changeId = previewId.replace('Preview','Change');
+    document.getElementById(changeId).style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+// UPLOAD IMAGE TO SUPABASE
+async function uploadImage(file, path) {
+  if (!file) return null;
+  const ext = file.name.split('.').pop();
+  const filename = `${currentUser.id}/${path}-${Date.now()}.${ext}`;
+  const { data, error } = await db.storage.from('wine-images').upload(filename, file, { upsert: true });
+  if (error) { console.error(error); return null; }
+  const { data: urlData } = db.storage.from('wine-images').getPublicUrl(filename);
+  return urlData.publicUrl;
+}
+
+// STARS
 document.querySelectorAll('.star').forEach(star => {
-  star.addEventListener('click', () => {
-    currentScore = +star.dataset.val;
-    renderStars(currentScore);
-  });
+  star.addEventListener('click', () => { currentScore = +star.dataset.val; renderStars(currentScore); });
   star.addEventListener('mouseenter', () => {
     const v = +star.dataset.val;
-    document.querySelectorAll('.star').forEach(s =>
-      s.style.color = +s.dataset.val <= v ? 'var(--gold)' : 'rgba(201,168,76,0.2)'
-    );
+    document.querySelectorAll('.star').forEach(s => s.style.color = +s.dataset.val <= v ? 'var(--gold)' : 'rgba(201,168,76,0.2)');
     document.getElementById('scoreLabel').textContent = scoreLabels[v];
   });
   star.addEventListener('mouseleave', () => renderStars(currentScore));
 });
 
 function renderStars(score) {
-  document.querySelectorAll('.star').forEach(s =>
-    s.style.color = +s.dataset.val <= score ? 'var(--gold)' : 'rgba(201,168,76,0.2)'
-  );
+  document.querySelectorAll('.star').forEach(s => s.style.color = +s.dataset.val <= score ? 'var(--gold)' : 'rgba(201,168,76,0.2)');
   document.getElementById('scoreLabel').textContent = score ? scoreLabels[score] : 'Tap to rate';
 }
 
-// ── LOAD WINES ──
+// LOAD
 async function loadWines() {
-  const { data, error } = await db
-    .from('wines')
-    .select('*')
-    .order('created_at', { ascending: false });
-
+  const { data, error } = await db.from('wines').select('*').order('created_at', { ascending: false });
   if (error) { console.error(error); return; }
   wines = data || [];
-  renderWines();
-  updateStats();
+  renderWines(); updateStats();
 }
 
-// ── ADD WINE ──
+// ADD WINE
 async function addWine() {
   const name = document.getElementById('wineName').value.trim();
   if (!name) { alert('Please enter a wine name.'); return; }
-
   const btn = document.getElementById('btnAdd');
   const status = document.getElementById('saveStatus');
   btn.disabled = true;
-  status.textContent = 'Saving...';
+  status.textContent = 'Uploading images...';
 
+  const bottleFile = document.getElementById('bottleFile').files[0];
+  const personalFile = document.getElementById('personalFile').files[0];
+  const [bottleUrl, personalUrl] = await Promise.all([
+    uploadImage(bottleFile, 'bottle'),
+    uploadImage(personalFile, 'personal')
+  ]);
+
+  status.textContent = 'Saving...';
   const { data, error } = await db.from('wines').insert([{
     user_id: currentUser.id,
     name,
@@ -587,41 +400,49 @@ async function addWine() {
     type: document.getElementById('wineType').value,
     score: currentScore || null,
     notes: document.getElementById('wineNotes').value.trim(),
+    bottle_image_url: bottleUrl,
+    personal_image_url: personalUrl,
     drunk_at: new Date().toISOString().split('T')[0]
   }]).select();
 
   btn.disabled = false;
-
-  if (error) {
-    console.error(error);
-    status.textContent = 'Error saving. Try again.';
-    return;
-  }
+  if (error) { console.error(error); status.textContent = 'Error saving. Try again.'; return; }
 
   status.textContent = '✓ Saved to your cellar!';
   setTimeout(() => status.textContent = '', 3000);
-
   wines.unshift(data[0]);
-  renderWines();
-  updateStats();
+  renderWines(); updateStats();
 
-  ['wineName','wineGrape','wineRegion','wineCountry','wineVintage','wineNotes'].forEach(id =>
-    document.getElementById(id).value = ''
-  );
-  currentScore = 0;
-  renderStars(0);
+  ['wineName','wineGrape','wineRegion','wineCountry','wineVintage','wineNotes'].forEach(id => document.getElementById(id).value = '');
+  ['bottleFile','personalFile'].forEach(id => document.getElementById(id).value = '');
+  ['bottlePreview','personalPreview'].forEach(id => { const el = document.getElementById(id); el.src=''; el.classList.remove('visible'); });
+  ['bottleIcon','personalIcon'].forEach(id => document.getElementById(id).style.display = '');
+  ['bottleChange','personalChange'].forEach(id => document.getElementById(id).style.display = 'none');
+  currentScore = 0; renderStars(0);
 }
 
-// ── DELETE WINE ──
+// DELETE
 async function deleteWine(id) {
   if (!confirm('Remove this wine from your cellar?')) return;
   await db.from('wines').delete().eq('id', id);
   wines = wines.filter(w => w.id !== id);
-  renderWines();
-  updateStats();
+  renderWines(); updateStats();
 }
 
-// ── FILTER ──
+// SEARCH
+function onSearch(input) {
+  searchQuery = input.value.toLowerCase();
+  document.getElementById('searchClear').classList.toggle('visible', searchQuery.length > 0);
+  renderWines();
+}
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  searchQuery = '';
+  document.getElementById('searchClear').classList.remove('visible');
+  renderWines();
+}
+
+// FILTER
 function setFilter(type, btn) {
   currentFilter = type;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -629,49 +450,68 @@ function setFilter(type, btn) {
   renderWines();
 }
 
-// ── RENDER ──
+// RENDER
+function getFiltered() {
+  let result = currentFilter === 'All' ? wines : wines.filter(w => w.type === currentFilter);
+  if (searchQuery) {
+    result = result.filter(w =>
+      (w.name||'').toLowerCase().includes(searchQuery) ||
+      (w.grape||'').toLowerCase().includes(searchQuery) ||
+      (w.region||'').toLowerCase().includes(searchQuery) ||
+      (w.country||'').toLowerCase().includes(searchQuery) ||
+      (w.notes||'').toLowerCase().includes(searchQuery)
+    );
+  }
+  return result;
+}
+
 function renderWines() {
   const list = document.getElementById('wineList');
-  const filtered = currentFilter === 'All' ? wines : wines.filter(w => w.type === currentFilter);
+  const filtered = getFiltered();
   document.getElementById('countBadge').textContent = `${filtered.length} wine${filtered.length !== 1 ? 's' : ''}`;
 
   if (!filtered.length) {
-    list.innerHTML = `<div class="empty-state"><div class="empty-icon">🍷</div><p>${wines.length ? 'No wines in this category yet.' : 'Your cellar is empty — uncork your first bottle.'}</p></div>`;
+    list.innerHTML = `<div class="empty-state"><div class="empty-icon">${searchQuery ? '🔍' : '🍷'}</div><p>${searchQuery ? 'No wines match your search.' : wines.length ? 'No wines in this category yet.' : 'Your cellar is empty — uncork your first bottle.'}</p></div>`;
     return;
   }
 
   list.innerHTML = filtered.map(w => `
     <div class="wine-card" data-type="${w.type}">
-      <div>
-        <div class="wine-name">${w.name}${w.vintage ? ` <span class="wine-vintage">${w.vintage}</span>` : ''}</div>
-        <div class="wine-meta">
-          ${w.grape ? `<span>🍇 ${w.grape}</span>` : ''}
-          ${w.region ? `<span>📍 ${w.region}${w.country ? ', ' + w.country : ''}</span>` : ''}
+      <div class="card-inner">
+        <div>
+          <div class="wine-name">${w.name}${w.vintage ? ` <span class="wine-vintage">${w.vintage}</span>` : ''}</div>
+          <div class="wine-meta">
+            ${w.grape ? `<span>🍇 ${w.grape}</span>` : ''}
+            ${w.region ? `<span>📍 ${w.region}${w.country ? ', ' + w.country : ''}</span>` : ''}
+          </div>
+          <span class="wine-type-badge badge-${w.type}">${w.type}</span>
+          ${w.notes ? `<div class="wine-notes">"${w.notes}"</div>` : ''}
         </div>
-        <span class="wine-type-badge badge-${w.type}">${w.type}</span>
-        ${w.notes ? `<div class="wine-notes">"${w.notes}"</div>` : ''}
+        <div class="card-right">
+          <div class="card-score">${w.score ? w.score + '/5' : '—'}</div>
+          <div class="card-stars">${w.score ? '★'.repeat(w.score) + '☆'.repeat(5 - w.score) : ''}</div>
+          <div class="card-date">${new Date(w.drunk_at).toLocaleDateString('en-GB', {day:'2-digit',month:'short',year:'numeric'})}</div>
+          <button class="btn-delete" onclick="deleteWine('${w.id}')">✕</button>
+        </div>
       </div>
-      <div class="card-right">
-        <div class="card-score">${w.score ? w.score + '/5' : '—'}</div>
-        <div class="card-stars">${w.score ? '★'.repeat(w.score) + '☆'.repeat(5 - w.score) : ''}</div>
-        <div class="card-date">${new Date(w.drunk_at).toLocaleDateString('en-GB', {day:'2-digit',month:'short',year:'numeric'})}</div>
-        <button class="btn-delete" onclick="deleteWine('${w.id}')">✕</button>
-      </div>
+      ${(w.bottle_image_url || w.personal_image_url) ? `
+      <div class="card-images">
+        ${w.bottle_image_url ? `<div class="card-img-wrap"><img class="card-img" src="${w.bottle_image_url}" alt="Bottle"><div class="card-img-label">Bottle</div></div>` : ''}
+        ${w.personal_image_url ? `<div class="card-img-wrap"><img class="card-img" src="${w.personal_image_url}" alt="Moment"><div class="card-img-label">The Moment</div></div>` : ''}
+      </div>` : ''}
     </div>`).join('');
 }
 
-// ── STATS ──
+// STATS
 function updateStats() {
   document.getElementById('statTotal').textContent = wines.length;
   if (wines.length) {
     const scored = wines.filter(w => w.score > 0);
-    document.getElementById('statAvg').textContent = scored.length
-      ? (scored.reduce((a, w) => a + w.score, 0) / scored.length).toFixed(1) : '—';
-    const gc = {};
-    wines.forEach(w => { if (w.grape) gc[w.grape] = (gc[w.grape] || 0) + 1; });
-    const top = Object.entries(gc).sort((a, b) => b[1] - a[1])[0];
+    document.getElementById('statAvg').textContent = scored.length ? (scored.reduce((a,w)=>a+w.score,0)/scored.length).toFixed(1) : '—';
+    const gc = {}; wines.forEach(w => { if(w.grape) gc[w.grape]=(gc[w.grape]||0)+1; });
+    const top = Object.entries(gc).sort((a,b)=>b[1]-a[1])[0];
     document.getElementById('statTop').textContent = top ? top[0].split(' ')[0] : '—';
-    const countries = new Set(wines.map(w => w.country).filter(Boolean));
+    const countries = new Set(wines.map(w=>w.country).filter(Boolean));
     document.getElementById('statCountry').textContent = countries.size || '—';
   } else {
     ['statAvg','statTop','statCountry'].forEach(id => document.getElementById(id).textContent = '—');
